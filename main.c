@@ -19,13 +19,15 @@ char source(int source)
   return *bare;
 }
 
-void but(char plateau[100][100], int x, int y)
+void but(char plateau[100][100], int x, int y, char **B)
 {
 
-  B = 0;
-   plateau[x][y] = 'p';
+  plateau[x][y] = 'p';
   
-  B = &plateau[x][y];
+  *B = &plateau[35][13];
+
+  printf("%a\n", *B);
+  printf("%c\n", plateau[35][13]);
   
 }
 
@@ -34,15 +36,11 @@ int main()
 
   char plateau[100][100];
   
+  char *B = NULL;
 
-  but(plateau, 35, 13);
+  but(plateau, 35, 13, &B);
 
-
-
-
-
-  printf("%c", *B);
-  
+  printf("%c", *B);  
 
   return 0;
 }
