@@ -25,9 +25,6 @@ void but(char plateau[100][100], int x, int y, char **B)
   plateau[x][y] = 'p';
   
   *B = &plateau[35][13];
-
-  printf("%a\n", *B);
-  printf("%c\n", plateau[35][13]);
   
 }
 
