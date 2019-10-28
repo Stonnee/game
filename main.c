@@ -23,9 +23,19 @@ char source(int source)
 void but(char plateau[100][101], int x, int y, char **B)
 {
 
-  plateau[x][y] = 'p';
+  plateau[x][y] = 'b';
  //B comme "but" = l'adresse de la localisation du but 
-  *B = &plateau[35][13];
+  *B = &plateau[x][y];
+  
+}
+
+
+void you(char plateau[100][101], int x, int y, char **T)
+{
+
+  plateau[x][y] = 'y';
+ //B comme "but" = l'adresse de la localisation du but 
+  *T = &plateau[x][y];
   
 }
 
@@ -39,8 +49,13 @@ int main()
 
   but(plateau, 35, 13, &B);
 ///////////////////////////
+  char *T = NULL;
+  
+  you(plateau, 100, 51, &T);
+  
 
-  printf("%c", *B);  
+  printf("%c\n", *B);  
+  printf("%c\n", *T);  
 
   return 0;
 }
