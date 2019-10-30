@@ -28,45 +28,79 @@ void but(char plateau[100][101], int x, int y, char **B)
     *B = &plateau[x][y];
 }
 
-void you(char plateau[100][101], int x, int y, char **T)
+void you(char plateau[100][101], int x, int y, int **T)
 {
 
     plateau[x][y] = 'y';
     //B comme "but" = l'adresse de la localisation du but
-    *T = &plateau[x][y];
+    *T = malloc(sizeof(int) * 2);
+    *T[0] = x;
+    *T[1] = y;
 }
 
-void moove(char plateau[100][101])
+int *crd(char plateau[100][101], char cible)
 {
     int l = 0;
     int c = 0;
-    //char Action;
-    //scanf("%c", &Action);
-    printf("%d\n", l);
-    printf("%d\n", c);
-
-    for (int i = 0; plateau[c][l] != 'y' && i < 101; i++)
+    
+    for (int i = 0; plateau[c][l] != cible && i < 101; i++)
     {
         //printf("%d\n", l);
         //printf("%d\n", c);
 
-        for (int i = 0; plateau[c][l] != 'y' && i < 101; i++)
+        for (int i = 0; plateau[c][l] != cible && i < 101; i++)
         {
 
             l++;
             // printf("%d\n", l);
             //printf("%d\n", c);
         }
-        if (plateau[c][l] != 'y')
+        if (plateau[c][l] != cible)
         {
         c++;
         l = 0;
         }
     }
 
-    printf("%d\n", l);
-    printf("%d\n", c);
-    printf("%c\n", plateau[c][l]);
+    int *crd = malloc(sizeof(int) * 2);
+   /* printf("%d\n", l);
+    printf("%d\n", c);*/
+
+        crd[0] = c;
+        crd[1] = l;
+    
+    //printf("%c\n", plateau[c][l]);
+    return crd;
+}
+
+void moove(char plateau[100][101])
+{
+    char Action;
+    scanf("%c", &Action);
+
+    int *xy = crd(plateau, 'y');
+
+    if (Action == 'z')
+    {
+        plateau[xy[0]-1][xy[1]] = 'y';
+        plateau[xy[0]][xy[1]] = 0;
+    }
+    if (Action == 'q')
+    {
+        plateau[xy[0]][xy[1]-1] = 'y';
+        plateau[xy[0]][xy[1]] = 0;
+    }
+    if (Action == 'd')
+    {
+        plateau[xy[0]][xy[1]+1] = 'y';
+        plateau[xy[0]][xy[1]] = 0;
+    }
+    if (Action == 's')
+    {
+        plateau[xy[0]+1][xy[1]] = 'y';
+        plateau[xy[0]][xy[1]] = 0;
+    }
+
 }
 
 void afficherTableau(char grille[100][101], int x, int y)
