@@ -10,29 +10,22 @@ int main()
  char plateau[100][101] = {0};
 
   //coordoner du but
-  char *B;
+  int B[2];
 
-  but(plateau, 35, 13, &B);
+  but(plateau, 35, 13, B);
 ///////////////////////////
-  int *T;
+  int T[2];
+
 
   printf("%d\n", T[0]);
   printf("%d\n", T[1]);
   
-  you(plateau, 100, 51, &T);
+  you(plateau, 100, 51, T);
   
   printf("%d\n", T[0]);
   printf("%d\n", T[1]);
 
- /* printf("%c\n", *B);  
-  printf("%c\n", *T); */
-
-  /*printf("%c\n", plateau[99][51]); 
-  printf("%c\n", plateau[100][51]); 
-  moove(plateau);
-   printf("%c\n", plateau[99][51]); 
-  printf("%c\n", plateau[100][51]);
-*/
+ 
   
   return 0;
 }

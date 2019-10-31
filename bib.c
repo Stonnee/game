@@ -20,22 +20,23 @@ char source(int source)
     return *bare;
 }
 
-void but(char plateau[100][101], int x, int y, char **B)
+void but(char plateau[100][101], int x, int y, int *B)
 {
 
     plateau[x][y] = 'b';
     //B comme "but" = l'adresse de la localisation du but
-    *B = &plateau[x][y];
+
+    B[0] = x;
+    B[1] = y;
 }
 
-void you(char plateau[100][101], int x, int y, int **T)
+void you(char plateau[100][101], int x, int y, int *T)
 {
 
     plateau[x][y] = 'y';
     //B comme "but" = l'adresse de la localisation du but
-    *T = malloc(sizeof(int) * 2);
-    *T[0] = x;
-    *T[1] = y;
+    T[0] = x;
+    T[1] = y;
 }
 
 int *crd(char plateau[100][101], char cible)
