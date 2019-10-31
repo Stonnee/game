@@ -17,13 +17,9 @@ int main()
   int T[2];
 
 
-  printf("%d\n", T[0]);
-  printf("%d\n", T[1]);
   
   you(plateau, 100, 51, T);
   
-  printf("%d\n", T[0]);
-  printf("%d\n", T[1]);
 
  
   
