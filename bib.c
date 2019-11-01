@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "bibi.h"
 
 int lire(char *chaine, int longueur)
 {
@@ -41,7 +42,7 @@ char source(int source)
     return *bare;
 }
 
-void but(char plateau[100][101], int x, int y, int *B)
+void but(char plateau[X][Y], int x, int y, int *B)
 {
 
     plateau[x][y] = 'b';
@@ -51,7 +52,7 @@ void but(char plateau[100][101], int x, int y, int *B)
     B[1] = y;
 }
 
-void you(char plateau[100][101], int x, int y, int *T)
+void you(char plateau[X][Y], int x, int y, int *T)
 {
 
     plateau[x][y] = 'y';
@@ -60,17 +61,17 @@ void you(char plateau[100][101], int x, int y, int *T)
     T[1] = y;
 }
 
-int *crd(char plateau[100][101], char cible)
+int *crd(char plateau[X][Y], char cible)
 {
     int l = 0;
     int c = 0;
 
-    for (int i = 0; plateau[c][l] != cible && i < 101; i++)
+    for (int i = 0; plateau[c][l] != cible && i < Y; i++)
     {
         //printf("%d\n", l);
         //printf("%d\n", c);
 
-        for (int i = 0; plateau[c][l] != cible && i < 101; i++)
+        for (int i = 0; plateau[c][l] != cible && i < Y; i++)
         {
 
             l++;
@@ -95,7 +96,7 @@ int *crd(char plateau[100][101], char cible)
     return crd;
 }
 
-void moove(char plateau[100][101])
+void moove(char plateau[X][Y])
 {
     char Action[5];
 
@@ -127,7 +128,7 @@ void moove(char plateau[100][101])
     }
 }
 
-void afficherTableau(char grille[100][101], int x, int y)
+void afficherTableau(char grille[X][Y], int x, int y)
 {
     int i;
     int j;
