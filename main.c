@@ -1,29 +1,43 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "bibi.h"
 
 int main()
 {
 
-  debut();
+  //debut();
+  Smonde *mape = malloc(sizeof(Smonde));
 
-  //maps
-  char plateau[X][Y] = {0};
+  fuck(mape->plateau, X, Y);
+  you(mape, 99, 51);
 
-  //coordoner du but
-  int B[2];
+txt("psst hey toi.\nviens vers moi, avance de 5 pas\n\n",32);
 
-  but(plateau, 93, 52, B);
-  ///////////////////////////
-  int T[2];
+  but(mape, 94, 51);
+afficherTableau(mape->plateau, X, Y);
+  game(mape);
 
-  you(plateau, 99, 51, T);
+  txt("hey tu m'a raté! recule de 2 pas\n\n",32);
 
-  char *p = "JOOOOOOSUKE!!! qu'es-ce que tu pensse faire en mangean mon dernier flan vanille heiiiin?!";
+  but(mape, 96, 51);
+  game(mape);
 
-  txt(p, 35);
+  txt("t'es bigleu ou quoi? je suis 2 pas à ta droite!\n\n",32);
+
+  but(mape, 96, 53);
+  game(mape);
+
+  txt("comment t'a fait pour aller aussi loin? t'es au moins à 20 pas la!! bon tu sais quoi je me rapproche, va juste faire 1 pas sur ta gauche.\n\n",32);
+
+  but(mape, 96, 52);
+  game(mape);
+
+  txt("pas trop tôt, au moins je vois que tu sais bouger dans se monde, pas donné à tout le monde\n\n",32);
+    
+
+  
   
 
+  
 
+  afficherTableau(mape->plateau, X, Y);
   return 0;
 }
