@@ -18,7 +18,7 @@ void afficherTableau(char grille[X][Y], int x, int y);
 int lire(char *chaine, int longueur);
 void game(char plateau[X][Y]);
 ///////////////////////////////////
-void début();
+void debut();
 void txt(char *phrase, int vitesse);
 
 #endif

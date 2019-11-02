@@ -1,18 +1,21 @@
 #include "bibi.h"
 
-void début()
+void debut()
 {
-    printf("mise à jour de l'invité de commande...\n\n");
+    printf("\n\n");
+    windows(1000);
+    printf("mise e jour de l'invite de commande...\n\n\n\n\n");
     windows(4000);
     printf("ajout de l'extention ouverture des porte...\n\n\n\n");
     windows(2000);
-    printf("altération des du system d'exploitation\n\n\n");
-    windows(600);
+    printf("alteration des du system d'exploitation\n\n\n\n\n\n\n\n");
+    windows(2000);
     printf("ajout de la porte des lymbe...\n\n");
     windows(2000);
     printf("...\n\n\n\n\n");
     windows(4000);
-    printf("ouverture...\n\n");
+    printf("ouverture\n\n");
+    windows(4000);
     system("cls");
 }
 

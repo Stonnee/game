@@ -4,6 +4,9 @@
 
 int main()
 {
+
+  debut();
+
   //maps
   char plateau[X][Y] = {0};
 
@@ -18,7 +21,7 @@ int main()
 
   char *p = "JOOOOOOSUKE!!! qu'es-ce que tu pensse faire en mangean mon dernier flan vanille heiiiin?!";
 
-  txt(p, 47);
+  txt(p, 35);
   
 
 
