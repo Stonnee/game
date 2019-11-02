@@ -5,39 +5,22 @@
 int main()
 {
   //maps
-  char plateau[100][101] = {0};
+  char plateau[X][Y] = {0};
 
   //coordoner du but
   int B[2];
 
-  but(plateau, 95, 51, B);
+  but(plateau, 93, 52, B);
   ///////////////////////////
   int T[2];
 
-  you(plateau, 100, 51, T);
+  you(plateau, 99, 51, T);
 
-  int *fin = crd(plateau, 'b');
-  int *toi = crd(plateau, 'y');
+  char *p = "JOOOOOOSUKE!!! qu'es-ce que tu pensse faire en mangean mon dernier flan vanille heiiiin?!";
 
-  while ((toi[0] != fin[0]) || (toi[1] != fin[1]))
-  {
-    afficherTableau(plateau, 100, 101);
-    moove(plateau);
-    
-    toi = crd(plateau, 'y');
+  txt(p, 47);
+  
 
-   /*  printf("1%c\n", plateau[95][51]);
-    printf("1%c\n", plateau[96][51]);
-    printf("2%c\n", plateau[97][51]);
-    printf("3%c\n", plateau[98][51]);
-    printf("4%c\n", plateau[99][51]);
-    printf("5%c\n", plateau[100][51]);*/
-
-    printf("\n");
-    printf("\n");
-    printf("**********************************\n");
-    system("cls");
-  }
 
   return 0;
 }

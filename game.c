@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "bibi.h"
 
 int lire(char *chaine, int longueur)
@@ -98,9 +95,9 @@ int *crd(char plateau[X][Y], char cible)
 
 void moove(char plateau[X][Y])
 {
-    char Action[5];
+    char Action[2];
 
-    lire(Action, 5);
+    lire(Action, 2);
     printf("%c\n", Action);
     printf("\n\n");
 
@@ -142,3 +139,33 @@ void afficherTableau(char grille[X][Y], int x, int y)
     }
 }
 
+void game(char plateau[X][Y])
+{
+int *fin = crd(plateau, 'b');
+ 
+  int *toi = crd(plateau, 'y');
+ 
+
+  while ((toi[0] != fin[0]) || (toi[1] != fin[1]))
+  {
+     printf("%d\n%d\n", fin[0], fin[1]);
+      printf("%d\n%d\n\n\n", toi[0], toi[1]);
+
+    //afficherTableau(plateau, X, Y);
+    moove(plateau);
+    
+    toi = crd(plateau, 'y');
+
+   /*  printf("1%c\n", plateau[95][51]);
+    printf("1%c\n", plateau[96][51]);
+    printf("2%c\n", plateau[97][51]);
+    printf("3%c\n", plateau[98][51]);
+    printf("4%c\n", plateau[99][51]);
+    printf("5%c\n", plateau[100][51]);*/
+
+    /*printf("\n");
+    printf("\n");
+    printf("**********************************\n");
+    system("cls");*/
+  }
+}
