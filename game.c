@@ -91,6 +91,12 @@ void moove(Smonde *mape)
     {
         teleport(mape);
     }
+    if (Action[0] == 'm')
+    {
+        afficherTableau(mape->plateau, X, Y);
+        printf("\n\n\n\n\n\n\n\n\n");
+        system("pause");
+    }
     
 }
 
