@@ -2,35 +2,32 @@
 
 void act1(Smonde *mape)
 {
-    you(mape, 99, 51);
+    you(mape, 49, 41);
 
     txt("psst hey toi.\nviens vers moi, avance de 5 pas\n\n", 32);
 
-    but(mape, 94, 51);
+    but(mape, 44, 41);
     game(mape);
 
-    txt("hey tu m'a raté! recule de 3 pas\n\n", 32);
+    txt("hey tu m'a rate! recule de 3 pas\n\n", 32);
 
-    but(mape, 97, 51);
+    but(mape, 47, 41);
+
+    
     game(mape);
 
-    txt("t'es bigleu ou quoi? je suis 2 pas à ta droite!\n\n", 32);
+    txt("t'es bigleu ou quoi? je suis 2 pas a ta droite!\n\n", 32);
 
-    but(mape, 97, 53);
+    but(mape, 47, 43);
     game(mape);
 
-    txt("comment t'a fait pour aller aussi loin? t'es au moins à 20 pas la!! bon tu sais quoi je me rapproche, va juste faire 1 pas sur ta gauche.\n\n", 32);
+    txt("comment t'a fait pour aller aussi loin? t'es au moins a 20 pas la!! bon tu sais quoi je me rapproche, va juste faire 1 pas sur ta gauche.\n\n", 32);
 
-    but(mape, 97, 52);
+    but(mape, 47, 42);
     game(mape);
 
-    txt("pas trop tôt, au moins t'es capable de bouger dans se monde, pas donné à tout le monde\n\n", 32);
+    txt("pas trop tot, au moins t'es capable de bouger dans se monde, ça t'evitera de finir bouffe par je ne sais quel bestiole\n\n", 32);
+
+    changemap(mape);
 }
 
-Bool yesiam(int i)
-{
-    if (i == 4)
-        return true;
-
-    return false;
-}

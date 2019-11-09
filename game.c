@@ -1,8 +1,5 @@
 #include "bibi.h"
 
-
-
-
 void but(Smonde *mape, int x, int y)
 {
 
@@ -15,7 +12,7 @@ void but(Smonde *mape, int x, int y)
 
 void you(Smonde *mape, int x, int y)
 {
-
+    
     mape->plateau[x][y] = 'y';
     //y comme "you" = l'adresse de la localisation du but
     mape->T[0] = x;
@@ -59,78 +56,114 @@ int *crd(Smonde *mape, char cible)
 
 void moove(Smonde *mape)
 {
-    char Action[3];
+    
+     while(!kbhit())
+    {
 
-    lire(Action, 3);
-    /*printf("%c\n", Action);
-    printf("\n\n");*/
+        /* windows(500);
+        printf("%c", getch()); */
+    }
+    
+    
+    char Action = getch();
+    printf("%c\n", Action);
+    windows(200);
 
-     int *xy = crd(mape, 'y');
+    int *xy = crd(mape, 'y');
 
-    if (Action[0] == 'z')
+    if (Action == 'z')
     {
-        mape->plateau[xy[0]-1][xy[1]] = 'y';
-        mape->plateau[xy[0]][xy[1]] = 0;  
+        if (obstacle(mape, 1))
+        {
+            mape->plateau[xy[0] - 1][xy[1]] = 1;
+            mape->plateau[xy[0]][xy[1]] = 'y';
+            txt("il y a maleureusement un mur...", 32);
+        }
+        else
+        {
+            mape->plateau[xy[0] - 1][xy[1]] = 'y';
+            mape->plateau[xy[0]][xy[1]] = 0;
+        }
     }
-    if (Action[0] == 'q')
+    if (Action == 'q')
     {
-        mape->plateau[xy[0]][xy[1]-1] = 'y';
-        mape->plateau[xy[0]][xy[1]] = 0;
+        if (obstacle(mape, 4))
+        {
+            mape->plateau[xy[0]][xy[1] - 1] = 1;
+            mape->plateau[xy[0]][xy[1]] = 'y';
+            txt("il y a maleureusement un mur...", 32);
+        }
+        else
+        {
+            mape->plateau[xy[0]][xy[1] - 1] = 'y';
+            mape->plateau[xy[0]][xy[1]] = 0;
+            
+        }
     }
-    if (Action[0] == 'd')
+    if (Action == 'd')
     {
-        mape->plateau[xy[0]][xy[1]+1] = 'y';
-        mape->plateau[xy[0]][xy[1]] = 0;
+        if (obstacle(mape, 3))
+        {
+            mape->plateau[xy[0]][xy[1] + 1] = 1;
+            mape->plateau[xy[0]][xy[1]] = 'y';
+            txt("il y a maleureusement un mur...", 32);
+        }
+        else
+        {
+            mape->plateau[xy[0]][xy[1] + 1] = 'y';
+            mape->plateau[xy[0]][xy[1]] = 0;
+        }
     }
-    if (Action[0] == 's')
+    if (Action == 's')
     {
-        mape->plateau[xy[0]+1][xy[1]] = 'y';
-        mape->plateau[xy[0]][xy[1]] = 0;
+        if (obstacle(mape, 2))
+        {
+            mape->plateau[xy[0] + 1][xy[1]] = 'y';
+            mape->plateau[xy[0]][xy[1]] = 1;
+            txt("il y a maleureusement un mur...", 32);
+        }
+
+        else
+        {
+            mape->plateau[xy[0] + 1][xy[1]] = 'y';
+            mape->plateau[xy[0]][xy[1]] = 0;
+        }
     }
-    if (Action[0] == 't')
+    if (Action == 't')
     {
         teleport(mape);
     }
-    if (Action[0] == 'm')
+    if (Action == 'm')
     {
         afficherTableau(mape->plateau, X, Y);
         printf("\n\n\n\n\n\n\n\n\n");
         system("pause");
     }
-    
+    if (Action == 'a')
+    {
+        mape->action = true;
+        action(mape);
+        mape->action = false;
+    }
 }
-
-
 
 void game(Smonde *mape)
 {
-    
-int *fin = crd(mape, 'b');
- 
-  int *toi = crd(mape, 'y');
- 
 
-  while ((toi[0] != fin[0]) || (toi[1] != fin[1]))
-  {
-     /*printf("%d\n%d\n", fin[0], fin[1]);
-      printf("%d\n%d\n\n\n", toi[0], toi[1]);*/
+    int *toi = crd(mape, 'y');
+    int *fin = crd(mape, 'b');
 
-    //afficherTableau(plateau, X, Y);
-    moove(mape);
-    
-    toi = crd(mape, 'y');
+    while ((toi[0] != fin[0]) || (toi[1] != fin[1]))
+    {
 
-     /*printf("1%c\n", plateau[95][51]);
-    printf("1%c\n", plateau[96][51]);
-    printf("2%c\n", plateau[97][51]);
-    printf("3%c\n", plateau[98][51]);
-    printf("4%c\n", plateau[99][51]);
-    printf("5%c\n", plateau[100][51]);*/
+        //afficherTableau(plateau, X, Y);
+        moove(mape);
 
-    /*printf("\n");
+        toi = crd(mape, 'y');
+
+        /*printf("\n");
     printf("\n");
     printf("**********************************\n");*/
-    system("cls");
-  }
+        system("cls");
+    }
 }
-

@@ -8,7 +8,6 @@ void teleport(Smonde *mape)
     windows(700);
     you(mape, mape->T[0], mape->T[1]);
     txt("vous êtes arrivez à destination\n", 32);
-
 }
 
 char source(int source)
@@ -30,25 +29,7 @@ char source(int source)
     return *bare;
 }
 
-int lire(char *chaine, int longueur)
-{
-    char *positionEntree = NULL;
 
-    // On lit le texte saisi au clavier
-    if (fgets(chaine, longueur, stdin) != NULL) // Pas d'erreur de saisie ?
-    {
-        positionEntree = strchr(chaine, '\n'); // On recherche l'"Entrée"
-        if (positionEntree != NULL)            // Si on a trouvé le retour à la ligne
-        {
-            *positionEntree = '\0'; // On remplace ce caractère par \0
-        }
-        return 1; // On renvoie 1 si la fonction s'est déroulée sans erreur
-    }
-    else
-    {
-        return 0; // On renvoie 0 s'il y a eu une erreur
-    }
-}
 
 void afficherTableau(char grille[X][Y], int x, int y)
 {
@@ -63,39 +44,92 @@ void afficherTableau(char grille[X][Y], int x, int y)
         printf("\n");
     }
 }
-void fuck(char grille[X][Y], int x, int y)
+void fuck(char grille[X][Y])
 {
     int i;
     int j;
+    int x = X;
+    int y = Y;
     for (i = 0; i < x; i++)
     {
         for (j = 0; j < y; j++)
         {
             grille[i][j] = 0;
         }
-      
     }
 }
 
-/*txt("psst hey toi.\nviens vers moi, avance de 5 pas\n\n",32);
+void changemap(Smonde *mape)
+{
 
-  but(mape, 94, 51);
+    FILE *fichier = NULL;
+    int i;
+    int j;
+    int x = X;
+    int y = Y;
 
-  game(mape);
+    fichier = fopen("map/maptest.txt", "r");
+    if (fichier == NULL)
+        printf("erreur ouverture fichier");
 
-  txt("hey tu m'a raté! recule de 2 pas\n\n",32);
+    for (i = 0; i < x; i++)
+    {
+        for (j = 0; j < y; j++)
+        {
 
-  but(mape, 96, 51);
-  game(mape);
+            char c = fgetc(fichier);
+            if (c != '\n')
+            {
+                int n = c - 48;
+                mape->plateau[i][j] = n;
+                
+            }
+        }
+    }
 
-  txt("t'es bigleu ou quoi? je suis 2 pas à ta droite!\n\n",32);
+    fclose(fichier);
+}
 
-  but(mape, 96, 53);
-  game(mape);
+Bool obstacle(Smonde *mape, int x)
+{
+    int *etat = crd(mape, 'y');
+    if (x == 1)
+    {
+        if (mape->plateau[etat[0] - 1][etat[1]] == 1)
+            return true;
+        else
+        {
+            return false;
+        }
+    }
+    else if (x == 2)
+    {
+        if (mape->plateau[etat[0] + 1][etat[1]] == 1)
+            return true;
+        else
+        {
+            return false;
+        }
+    }
 
-  txt("comment t'a fait pour aller aussi loin? t'es au moins à 20 pas!! bon tu sais quoi je me rapproche, va juste faire 1 pas sur ta gauche.\n\n",32);
+    else if (x == 3)
+    {
+        if (mape->plateau[etat[0]][etat[1] + 1] == 1)
+            return true;
+        else
+        {
+            return false;
+        }
+    }
+    else if (x == 4)
+    {
+        if (mape->plateau[etat[0]][etat[1] - 1] == 1)
+            return true;
+        else
+        {
+            return false;
+        }
+    }
 
-  but(mape, 96, 52);
-  game(mape);
-
-  txt("pas trop tôt, au moins je vois que tu sais bouger dans se monde, pas donné à tout le monde\n\n",32);*/
+    return false;
+}

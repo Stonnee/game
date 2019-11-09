@@ -2,7 +2,6 @@
 
 void debut()
 {
-    /*printf("\n\n");
     windows(1000);
     printf("mise e jour de l'invite de commande...\n\n\n\n\n");
     windows(4000);
@@ -17,9 +16,9 @@ void debut()
     printf("ouverture\n\n");
     windows(4000);
     system("cls");
-    windows(4000);*/
+    windows(4000);
     txt("\nah?",32);
-    windows(2000);
+    windows(4000);
     txt("\nétrange...",32);
     windows(2000);
     txt("vous voici dans un endroit totalement sombre,",32);
