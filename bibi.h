@@ -8,7 +8,7 @@
 #include <conio.h>
 #define X 50
 #define Y 81
-#define windows Sleep
+#define windows nanosleep
 #define stop system("pause");
 ////////////////////////////////////
 typedef enum
