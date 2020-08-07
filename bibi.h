@@ -5,10 +5,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include <conio.h>
-#define X 50
-#define Y 81
-#define windows nanosleep
+#define X 15
+#define Y 31
+#define windows Sleep
 #define stop system("pause");
 ////////////////////////////////////
 typedef enum
@@ -32,27 +31,19 @@ typedef struct Monde
     
 }Smonde;
 /////////////////////////////////////////////game
-char source(int source);
 void but(Smonde *mape, int x, int y);
 void you(Smonde *mape, int x, int y);
 int *crd(Smonde *mape, char cible);
 void moove(Smonde *mape);
 void afficherTableau(char grille[X][Y], int x, int y);
-void game(Smonde *mape);
-void teleport(Smonde *mape);
-void fuck(char grille[X][Y]);
-void changemap(Smonde *mape);
+void game(Smonde *mape,char *argv);
+void changemap(Smonde *mape, char *Map);
 Bool obstacle(Smonde *mape, int x);
-
-///////////////////////////////////texte
-void debut();
+void hard(Smonde *mape);
+void normal(Smonde *mape);
 void txt(char *phrase, int vitesse);
 
-///////////////////////////act
-void act1(Smonde *mape);
-
 //////////////////////////
-void action(Smonde *mape);
 
 
 
